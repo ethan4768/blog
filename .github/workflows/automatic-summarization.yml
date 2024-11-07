@@ -1,0 +1,55 @@
+name: Automatically retrieve and summarize posts
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  automatic-summarization:
+    if: ${{ startsWith(github.event.head_commit.message, '[API][bookmark][ARSP]') }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Get Latest Commit Message
+        id: latest-commit
+        run: |
+          {
+            echo 'COMMIT_MESSAGE<<EOF'
+            git log -1 --pretty=%B
+            echo EOF
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+      - run: pip install -r requirements.txt
+
+      - name: Run python script
+        env:
+          LATEST_COMMIT_MESSAGE: ${{ steps.latest-commit.outputs.COMMIT_MESSAGE }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
+          OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
+          BARK_DEVICE_KEY: ${{ secrets.BARK_DEVICE_KEY }}
+          IGNORE_URLS: ${{ secrets.IGNORE_URLS }}
+          PUSH_SUCCESS_RESULT: ${{ secrets.PUSH_SUCCESS_RESULT }}
+        run: |
+          # echo "$LATEST_COMMIT_MESSAGE"
+          python scripts/automatic_summarization.py
+
+      - name: Commit and push
+        env:
+          LATEST_COMMIT_MESSAGE: ${{ steps.latest-commit.outputs.COMMIT_MESSAGE }}
+        run: |
+          COMMIT_TITLE=$(echo "$LATEST_COMMIT_MESSAGE" | sed -n 's/.*\[ARSP\] \(.*\)/\1/p')
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git add .
+          git commit -m "[ACTION][SUMMARY]: $COMMIT_TITLE" || echo "No changes to commit"
+          git push

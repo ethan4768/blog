@@ -1,0 +1,16 @@
+---
+import { SITE } from "@config";
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+import getSortedArticles from "@utils/sort";
+import ArticleList from "@layouts/ArticleList.astro";
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const favorites = await getCollection("favorites", ({ data }) => !data.draft);
+  return paginate(getSortedArticles(favorites), { pageSize: SITE.articleCountPerPage });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+---
+
+<ArticleList page={page} collection="favorites" pageTitle="Favorites" pageDescription="自己在用的各类工具和一些技巧" />

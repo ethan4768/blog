@@ -1,0 +1,33 @@
+---
+import { getCollection } from "astro:content";
+import TagPosts from "../../../layouts/TagArticles.astro";
+import { getArticlesByTag } from "@utils/tag";
+import type { GetStaticPathsOptions } from "astro";
+import { SITE } from "@config";
+import { getUniqueTags } from "@utils/tag";
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const posts = await getCollection("posts");
+  const bookmarks = await getCollection("bookmarks");
+  const favorites = await getCollection("favorites");
+  const allArticles = [...posts, ...bookmarks, ...favorites];
+
+  const tags = getUniqueTags(allArticles);
+
+  return tags.flatMap(({ tag, tagName }) => {
+    const tagArticles = getArticlesByTag(allArticles, tag);
+
+    return paginate(tagArticles, {
+      params: { tag },
+      props: { tagName },
+      pageSize: SITE.articleCountPerPage,
+    });
+  });
+}
+
+const params = Astro.params;
+const { tag } = params;
+const { page, tagName } = Astro.props;
+---
+
+<TagPosts page={page} tag={tag} tagName={tagName} />

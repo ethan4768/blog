@@ -1,0 +1,16 @@
+---
+import { SITE } from "@config";
+import ArticleList from "@layouts/ArticleList.astro";
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+import getSortedArticles from "@utils/sort";
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const posts = await getCollection("posts", ({ data }) => !data.draft);
+  return paginate(getSortedArticles(posts), { pageSize: SITE.articleCountPerPage });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+---
+
+<ArticleList page={page} collection="posts" pageTitle="Posts" pageDescription="自己写的一些内容" />

@@ -1,0 +1,25 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import PostDetails from "../../../layouts/ArticleDetail.astro";
+import getSortedArticles from "../../../utils/sort";
+
+export interface Props {
+  post: CollectionEntry<"bookmarks">;
+}
+
+export async function getStaticPaths() {
+  const posts = await getCollection("bookmarks", ({ data }) => !data.draft);
+
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+
+const posts = await getCollection("bookmarks");
+const sortedPosts = getSortedArticles(posts);
+---
+
+<PostDetails article={post} articles={sortedPosts} />
