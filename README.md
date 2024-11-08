@@ -57,3 +57,10 @@
 4. `IGNORE_URLS`，在 action 执行时忽略的 URL 列表，使用英文逗号分割，默认为 `x.com,twitter.com`
 5. `PUSH_SUCCESS_RESULT`，action 执行完成后，会通过 [Bark](https://github.com/finb/bark) 推送消息到 iPhone，默认值为 `false`，即只推送失败的情况，改为 `true` 也可推送成功的情况。
 6. `BARK_DEVICE_KEY`，使用 [Bark](https://github.com/finb/bark) 推送消息时所需的 KEY 
+
+## 使用的技术&服务
+
+- Cloudflare Pages，托管
+- astro，web 框架
+- Github Actions，自动化流程
+- [Jina Reader API](https://jina.ai/reader) 根据 URL 获取 markdown 内容，提供免费计划，无须信用卡，个人使用足够
