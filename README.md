@@ -10,7 +10,7 @@
 - [x] 删除 ShareLinks
 - [x] tags 移到页面上方，标题下方
 - [x] 集成 MDX，参考 [@astrojs/mdx | Docs](https://docs.astro.build/en/guides/integrations-guide/mdx/)
-- [ ] 新标签页打开页面中链接
+- [x] ~~新标签页打开页面中链接~~ [Should Links Open In New Windows? — Smashing Magazine](https://www.smashingmagazine.com/2008/07/should-links-open-in-new-windows/)
 - [ ] 集成评论系统，准备使用 [Giscus](https://github.com/giscus/giscus)
 
 ## 内容
@@ -36,6 +36,10 @@
     ```
     if: ${{ startsWith(github.event.head_commit.message, '[API][bookmark][ARSP]') }}
     ```
+
+**备注：**
+> `[skip actions]` 只会跳过 github workflow，不会跳过 Cloudflare Workers and Pages 的构建，可以再添加 `[CF-Pages-Skip]` 来跳过
+> 或者直接使用 `[skip ci]` 来跳过所有 action
 
 ## 设置
 
