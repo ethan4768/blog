@@ -3,8 +3,8 @@ title: 通过 Hyperduck 和快捷指令将 iPhone URL 发送至 Mac
 slug: send-url-from-iphone-to-mac-hyperduck-shortcuts
 description: 使用 Hyperduck 和快捷指令，将 iPhone 上的 URL 发送到 Mac，并在默认浏览器中打开。本文详细介绍了如何配置和使用这些工具，满足自动化需求，让你的工作效率更高。
 tags: 
-  - i-o-stips
-  - mac-tips
+  - iostips
+  - mactips
   - tool
   - automation
   - awesome
@@ -18,7 +18,7 @@ ogImage: https://blog.finengine.tech/posts/%E5%80%9F%E5%8A%A9-hyperduck-%E5%92%8
 
 ## 需求[](#需求)
 
-当我用手机刷 twitter 或其他网站时，经常会发现一些有趣的内容，但有时在手机上不太方便深入研究，于是便借助各项工具暂存以便从 Mac 上进行查看。但经常发生的情况是，要不是在收藏夹吃灰，要不就是需要每次手动打开页面并手动删除暂存内容。 我自己使用过的方法有：
+当我用手机刷 twitter 或其他网站时，经常会发现一些有趣的内容，但有时在手机上不太方便深入研究，于是便借助各项工具暂存以便从 Mac 上进行查看。但经常发生的情况是，要不是在收藏夹吃灰，要不就是需要每次手动打开页面并手动删除暂存内容。我自己使用过的方法有：
 
 1. Pocket
 2. 微信收藏、微信文件传输助手
@@ -38,7 +38,7 @@ ogImage: https://blog.finengine.tech/posts/%E5%80%9F%E5%8A%A9-hyperduck-%E5%92%8
 
 > Send links from your iOS/visionOS devices to your Mac
 
-Hyperduck 将链接从 iOS 设备上发送到 Mac，并直接在浏览器中打开。 需要注意的是，Hyperduck 使用 iCloud 进行同步，所以速度和稳定性主要取决于 iCloud，从我在国内的体验上看，大约会延迟 1 \~ 5 秒。
+Hyperduck 将链接从 iOS 设备上发送到 Mac，并直接在浏览器中打开。需要注意的是，Hyperduck 使用 iCloud 进行同步，所以速度和稳定性主要取决于 iCloud，从我在国内的体验上看，大约会延迟 1 \~ 5 秒。
 
 ### 配置[](#配置)
 
@@ -59,7 +59,7 @@ Hyperduck 将链接从 iOS 设备上发送到 Mac，并直接在浏览器中打�
 
 ### 快捷指令-Send URLs to Mac[](#快捷指令-send-urls-to-mac)
 
-这个操作可以直接将一个 URL 发送到 Mac 并自动打开，还可以调用 Mac 上 Raycast 提供的 [deeplink](https://manual.raycast.com/deeplinks)。 使用方法，在 iOS 设备上新建快捷指令，选择“Send URLs to Mac”，然后将 `URLs` 部分替换为 Raycast deeplink 即可。在 Raycast 中可以很方便获取 deeplink。
+这个操作可以直接将一个 URL 发送到 Mac 并自动打开，还可以调用 Mac 上 Raycast 提供的 [deeplink](https://manual.raycast.com/deeplinks)。使用方法，在 iOS 设备上新建快捷指令，选择“Send URLs to Mac”，然后将 `URLs` 部分替换为 Raycast deeplink 即可。在 Raycast 中可以很方便获取 deeplink。
 
 ![](https://images.finengine.tech/2024/02/213e7246b28f97427651d8aa7c35c615.jpeg)
 
@@ -77,7 +77,7 @@ Hyperduck 将链接从 iOS 设备上发送到 Mac，并直接在浏览器中打�
 
 ### 快捷指令-Run Shortcut on Mac[](#快捷指令-run-shortcut-on-mac)
 
-这个操作可以远程执行 Mac 上的快捷指令。 使用方法，在 iOS 设备上新建快捷指令，选择“Run Shortcut on Mac”，然后将 `Shortcut` 部分替换为 Mac 上的快捷指令名称即可。所以要完成一个动作，需要先在 Mac 上设置好要执行的快捷指令，然后在 iOS 设备上新建快捷指令。
+这个操作可以远程执行 Mac 上的快捷指令。使用方法，在 iOS 设备上新建快捷指令，选择“Run Shortcut on Mac”，然后将 `Shortcut` 部分替换为 Mac 上的快捷指令名称即可。所以要完成一个动作，需要先在 Mac 上设置好要执行的快捷指令，然后在 iOS 设备上新建快捷指令。
 
 比如：
 
