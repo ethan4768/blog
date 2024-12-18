@@ -63,12 +63,20 @@ Docker 容器工具
 
 - **备注**:
     - 一些配置
-        ```
-        # Homebrew 在安装软件时自动清理临时文件和缓存，导致安装速度较慢，可以禁用此功能
-        export HOMEBREW_NO_INSTALL_CLEANUP=true 
-        # Homebrew 在安装软件时，总是先自动升级自己，可以禁用此功能
-        export HOMEBREW_NO_AUTO_UPDATE=true
-        ```
+      ```
+      # Homebrew 在安装软件时自动清理临时文件和缓存，导致安装速度较慢，可以禁用此功能
+      export HOMEBREW_NO_INSTALL_CLEANUP=true 
+      # Homebrew 在安装软件时，总是先自动升级自己，可以禁用此功能
+      export HOMEBREW_NO_AUTO_UPDATE=true
+      ```
+    - 导出软件包列表
+      ```shell
+      brew bundle dump --file=Brewfile --force
+      ```
+    - 新电脑上导入
+      ```shell
+      brew bundle --file=Brewfile
+      ```
 - **价格**: 免费，开源
 - **地址**: [官网](https://brew.sh/), [GitHub](https://github.com/Homebrew/brew)
 
