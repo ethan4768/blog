@@ -1,7 +1,8 @@
 ---
-title: PDFMathTranslate: AI-Powered PDF Scientific Paper Translation with Format Preservation
+title: "PDFMathTranslate: AI-Powered PDF Scientific Paper Translation with Format Preservation"
 slug: pdf-math-translate-ai-powered-pdf-scientific-paper-translation-with-format-preservation
-description: PDFMathTranslate allows for bilingual translation of PDF scientific papers while preserving original formatting. It supports various translation services such as Google, DeepL, Ollama, and OpenAI, and offers command-line, GUI, and Docker deployment options. Enhance your research accessibility with this innovative tool.
+description: |
+  PDFMathTranslate allows for bilingual translation of PDF scientific papers while preserving original formatting. It supports various translation services such as Google, DeepL, Ollama, and OpenAI, and offers command-line, GUI, and Docker deployment options. Enhance your research accessibility with this innovative tool.
 tags: 
   - AI
   - dev

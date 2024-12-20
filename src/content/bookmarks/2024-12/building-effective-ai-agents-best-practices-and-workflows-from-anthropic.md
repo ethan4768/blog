@@ -1,7 +1,8 @@
 ---
-title: Building Effective AI Agents: Best Practices and Workflows from Anthropic
+title: "Building Effective AI Agents: Best Practices and Workflows from Anthropic"
 slug: building-effective-ai-agents-best-practices-and-workflows-from-anthropic
-description: Anthropic shares insights on building effective agents using AI and LLMs. Explore practical advice and workflows for developers to create agentic systems, emphasizing simplicity, composability, and the right use of frameworks for successful integration into applications.
+description: |
+  Anthropic shares insights on building effective agents using AI and LLMs. Explore practical advice and workflows for developers to create agentic systems, emphasizing simplicity, composability, and the right use of frameworks for successful integration into applications.
 tags: 
   - AI
   - dev
@@ -18,7 +19,7 @@ ogImage: https://cdn.sanity.io/images/4zrzovbb/website/b05cf65de663b0b93909dee50
 
 Over the past year, we've worked with dozens of teams building large language model (LLM) agents across industries. Consistently, the most successful implementations weren't using complex frameworks or specialized libraries. Instead, they were building with simple, composable patterns.
 
-In this post, we share what we’ve learned from working with our customers and building agents ourselves, and give practical advice for developers on building effective agents.
+In this post, we share what we've learned from working with our customers and building agents ourselves, and give practical advice for developers on building effective agents.
 
 ## What are agents?
 
@@ -27,7 +28,7 @@ In this post, we share what we’ve learned from working with our customers and 
 * **Workflows** are systems where LLMs and tools are orchestrated through predefined code paths.
 * **Agents**, on the other hand, are systems where LLMs dynamically direct their own processes and tool usage, maintaining control over how they accomplish tasks.
 
-Below, we will explore both types of agentic systems in detail. In Appendix 1 (“Agents in Practice”), we describe two domains where customers have found particular value in using these kinds of systems.
+Below, we will explore both types of agentic systems in detail. In Appendix 1 ("Agents in Practice"), we describe two domains where customers have found particular value in using these kinds of systems.
 
 ## When (and when not) to use agents
 
@@ -52,7 +53,7 @@ See our [cookbook](https://github.com/anthropics/anthropic-cookbook/tree/main/pa
 
 ## Building blocks, workflows, and agents
 
-In this section, we’ll explore the common patterns for agentic systems we’ve seen in production. We'll start with our foundational building block—the augmented LLM—and progressively increase complexity, from simple compositional workflows to autonomous agents.
+In this section, we'll explore the common patterns for agentic systems we've seen in production. We'll start with our foundational building block—the augmented LLM—and progressively increase complexity, from simple compositional workflows to autonomous agents.
 
 ### Building block: The augmented LLM
 
@@ -64,7 +65,7 @@ For the remainder of this post, we'll assume each LLM call has access to these a
 
 ### Workflow: Prompt chaining
 
-Prompt chaining decomposes a task into a sequence of steps, where each LLM call processes the output of the previous one. You can add programmatic checks (see "gate” in the diagram below) on any intermediate steps to ensure that the process is still on track.
+Prompt chaining decomposes a task into a sequence of steps, where each LLM call processes the output of the previous one. You can add programmatic checks (see "gate" in the diagram below) on any intermediate steps to ensure that the process is still on track.
 
 **When to use this workflow:** This workflow is ideal for situations where the task can be easily and cleanly decomposed into fixed subtasks. The main goal is to trade off latency for higher accuracy, by making each LLM call an easier task.
 
@@ -98,7 +99,7 @@ LLMs can sometimes work simultaneously on a task and have their outputs aggregat
 * **Sectioning**:
 
   * Implementing guardrails where one model instance processes user queries while another screens them for inappropriate content or requests. This tends to perform better than having the same LLM call handle both guardrails and the core response.
-  * Automating evals for evaluating LLM performance, where each LLM call evaluates a different aspect of the model’s performance on a given prompt.
+  * Automating evals for evaluating LLM performance, where each LLM call evaluates a different aspect of the model's performance on a given prompt.
 
 * **Voting**:
 
@@ -129,7 +130,7 @@ In the evaluator-optimizer workflow, one LLM call generates a response while ano
 
 ### Agents
 
-Agents are emerging in production as LLMs mature in key capabilities—understanding complex inputs, engaging in reasoning and planning, using tools reliably, and recovering from errors. Agents begin their work with either a command from, or interactive discussion with, the human user. Once the task is clear, agents plan and operate independently, potentially returning to the human for further information or judgement. During execution, it's crucial for the agents to gain “ground truth” from the environment at each step (such as tool call results or code execution) to assess its progress. Agents can then pause for human feedback at checkpoints or when encountering blockers. The task often terminates upon completion, but it’s also common to include stopping conditions (such as a maximum number of iterations) to maintain control.
+Agents are emerging in production as LLMs mature in key capabilities—understanding complex inputs, engaging in reasoning and planning, using tools reliably, and recovering from errors. Agents begin their work with either a command from, or interactive discussion with, the human user. Once the task is clear, agents plan and operate independently, potentially returning to the human for further information or judgement. During execution, it's crucial for the agents to gain "ground truth" from the environment at each step (such as tool call results or code execution) to assess its progress. Agents can then pause for human feedback at checkpoints or when encountering blockers. The task often terminates upon completion, but it's also common to include stopping conditions (such as a maximum number of iterations) to maintain control.
 
 Agents can handle sophisticated tasks, but their implementation is often straightforward. They are typically just LLMs using tools based on environmental feedback in a loop. It is therefore crucial to design toolsets and their documentation clearly and thoughtfully. We expand on best practices for tool development in Appendix 2 ("Prompt Engineering your Tools").
 
@@ -155,7 +156,7 @@ Success in the LLM space isn't about building the most sophisticated system. It'
 When implementing agents, we try to follow three core principles:
 
 1. Maintain **simplicity** in your agent's design.
-2. Prioritize **transparency** by explicitly showing the agent’s planning steps.
+2. Prioritize **transparency** by explicitly showing the agent's planning steps.
 3. Carefully craft your agent-computer interface (ACI) through thorough tool **documentation and testing**.
 
 Frameworks can help you get started quickly, but don't hesitate to reduce abstraction layers and build with basic components as you move to production. By following these principles, you can create agents that are not only powerful but also reliable, maintainable, and trusted by their users.
@@ -204,7 +205,7 @@ Our suggestions for deciding on tool formats are the following:
 
 One rule of thumb is to think about how much effort goes into human-computer interfaces (HCI), and plan to invest just as much effort in creating good *agent*-computer interfaces (ACI). Here are some thoughts on how to do so:
 
-* Put yourself in the model's shoes. Is it obvious how to use this tool, based on the description and parameters, or would you need to think carefully about it? If so, then it’s probably also true for the model. A good tool definition often includes example usage, edge cases, input format requirements, and clear boundaries from other tools.
+* Put yourself in the model's shoes. Is it obvious how to use this tool, based on the description and parameters, or would you need to think carefully about it? If so, then it's probably also true for the model. A good tool definition often includes example usage, edge cases, input format requirements, and clear boundaries from other tools.
 * How can you change parameter names or descriptions to make things more obvious? Think of this as writing a great docstring for a junior developer on your team. This is especially important when using many similar tools.
 * Test how the model uses your tools: Run many example inputs in our [workbench](https://console.anthropic.com/workbench) to see what mistakes the model makes, and iterate.
 * [Poka-yoke](https://en.wikipedia.org/wiki/Poka-yoke) your tools. Change the arguments so that it is harder to make mistakes.
