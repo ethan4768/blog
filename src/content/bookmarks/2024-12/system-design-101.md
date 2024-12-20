@@ -1,7 +1,8 @@
 ---
-title: 系统设计101：有效准备系统设计面试的可视化学习
+title: "系统设计 101：有效准备系统设计面试的可视化学习"
 slug: system-design-101
-description: 系统设计101提供了复杂系统的清晰可视化和简化解释，帮助您准备系统设计面试。深入探讨通信协议、CI/CD、微服务等内容，获取在技术面试中脱颖而出的知识。
+description: |
+  系统设计 101 提供了复杂系统的清晰可视化和简化解释，帮助您准备系统设计面试。深入探讨通信协议、CI/CD、微服务等内容，获取在技术面试中脱颖而出的知识。
 tags: 
   - dev
   - tool
@@ -262,7 +263,7 @@ Short polling has two drawbacks: 
 
 We can register a webhook with the external service. It means: call me back at a certain URL when you have updates on the request. When the PSP has completed the processing, it will invoke the HTTP request to update the payment status.
 
-In this way, the programming paradigm is changed, and the payment service doesn’t need to waste resources to poll the payment status anymore.
+In this way, the programming paradigm is changed, and the payment service doesn't need to waste resources to poll the payment status anymore.
 
 What if the PSP never calls back? We can set up a housekeeping job to check payment status every hour.
 
@@ -312,13 +313,13 @@ The diagram below illustrates the key features.
 
 * HTTP 1.0 was finalized and fully documented in 1996. Every request to the same server requires a separate TCP connection.
 
-* HTTP 1.1 was published in 1997. A TCP connection can be left open for reuse (persistent connection), but it doesn’t solve the HOL (head-of-line) blocking issue.
+* HTTP 1.1 was published in 1997. A TCP connection can be left open for reuse (persistent connection), but it doesn't solve the HOL (head-of-line) blocking issue.
 
   HOL blocking - when the number of allowed parallel requests in the browser is used up, subsequent requests need to wait for the former ones to complete.
 
 * HTTP 2.0 was published in 2015. It addresses HOL issue through request multiplexing, which eliminates HOL blocking at the application layer, but HOL still exists at the transport (TCP) layer.
 
-  As you can see in the diagram, HTTP 2.0 introduced the concept of HTTP “streams”: an abstraction that allows multiplexing different HTTP exchanges onto the same TCP connection. Each stream doesn’t need to be sent in order.
+  As you can see in the diagram, HTTP 2.0 introduced the concept of HTTP "streams": an abstraction that allows multiplexing different HTTP exchanges onto the same TCP connection. Each stream doesn't need to be sent in order.
 
 * HTTP 3.0 first draft was published in 2020. It is the proposed successor to HTTP 2.0. It uses QUIC instead of TCP for the underlying transport protocol, thus removing HOL blocking in the transport layer.
 
@@ -428,7 +429,7 @@ Steps 6-10: When Device B receives the bits from the network, it performs the de
 
 We need layers in the network model because each layer focuses on its own responsibilities. Each layer can rely on the headers for processing instructions and does not need to know the meaning of the data from the last layer.
 
-### Why is Nginx called a “reverse” proxy?
+### Why is Nginx called a "reverse" proxy?
 
 [](#why-is-nginx-called-a-reverse-proxy)
 
@@ -469,7 +470,7 @@ The diagram below shows 6 common algorithms.
 
 2. Sticky round-robin
 
-   This is an improvement of the round-robin algorithm. If Alice’s first request goes to service A, the following requests go to service A as well.
+   This is an improvement of the round-robin algorithm. If Alice's first request goes to service A, the following requests go to service A as well.
 
 3. Weighted round-robin
 
@@ -477,7 +478,7 @@ The diagram below shows 6 common algorithms.
 
 4. Hash
 
-   This algorithm applies a hash function on the incoming requests’ IP or URL. The requests are routed to relevant instances based on the hash function result.
+   This algorithm applies a hash function on the incoming requests' IP or URL. The requests are routed to relevant instances based on the hash function result.
 
 * Dynamic Algorithms
 
@@ -640,8 +641,8 @@ The answer will vary depending on your use case. Data can be indexed in memory o
 The following are some of the most popular data structures used for indexing data:
 
 * Skiplist: a common in-memory index type. Used in Redis
-* Hash index: a very common implementation of the “Map” data structure (or “Collection”)
-* SSTable: immutable on-disk “Map” implementation
+* Hash index: a very common implementation of the "Map" data structure (or "Collection")
+* SSTable: immutable on-disk "Map" implementation
 * LSM tree: Skiplist + SSTable. High write throughput
 * B-tree: disk-based solution. Consistent read/write performance
 * Inverted index: used for document indexing. Used in Lucene
@@ -670,13 +671,13 @@ Step 6 - Access methods decide whether the SQL statement is read-only. If the qu
 
 Step 7 - If the statement is an UPDATE or INSERT, it is passed to the transaction manager for further processing.
 
-Step 8 - During a transaction, the data is in lock mode. This is guaranteed by the lock manager. It also ensures the transaction’s ACID properties.
+Step 8 - During a transaction, the data is in lock mode. This is guaranteed by the lock manager. It also ensures the transaction's ACID properties.
 
 ### CAP theorem
 
 [](#cap-theorem)
 
-The CAP theorem is one of the most famous terms in computer science, but I bet different developers have different understandings. Let’s examine what it is and why it can be confusing.
+The CAP theorem is one of the most famous terms in computer science, but I bet different developers have different understandings. Let's examine what it is and why it can be confusing.
 
 [![](</ByteByteGoHq/system-design-101/raw/main/images/cap theorem.jpeg>)](https://github.com/ByteByteGoHq/system-design-101/blob/main/images/cap%20theorem.jpeg)
 
@@ -688,7 +689,7 @@ CAP theorem states that a distributed system can't provide more than two of thes
 
 **Partition Tolerance**: a partition indicates a communication break between two nodes. Partition tolerance means the system continues to operate despite network partitions.
 
-The “2 of 3” formulation can be useful, **but this simplification could be misleading**.
+The "2 of 3" formulation can be useful, **but this simplification could be misleading**.
 
 1. Picking a database is not easy. Justifying our choice purely based on the CAP theorem is not enough. For example, companies don't choose Cassandra for chat applications simply because it is an AP system. There is a list of good characteristics that make Cassandra a desirable option for storing chat messages. We need to dig deeper.
 
@@ -920,11 +921,11 @@ Below you will find a diagram showing the microservice tech stack, both for the 
 
 [](#why-is-kafka-fast)
 
-There are many design decisions that contributed to Kafka’s performance. In this post, we’ll focus on two. We think these two carried the most weight.
+There are many design decisions that contributed to Kafka's performance. In this post, we'll focus on two. We think these two carried the most weight.
 
 [![](/ByteByteGoHq/system-design-101/raw/main/images/why_is_kafka_fast.jpeg)](https://github.com/ByteByteGoHq/system-design-101/blob/main/images/why_is_kafka_fast.jpeg)
 
-1. The first one is Kafka’s reliance on Sequential I/O.
+1. The first one is Kafka's reliance on Sequential I/O.
 2. The second design choice that gives Kafka its performance advantage is its focus on efficiency: zero copy principle.
 
 The diagram illustrates how the data is transmitted between producer and consumer, and what zero-copy means.
@@ -958,7 +959,7 @@ Zero copy is a shortcut to save the multiple data copies between application con
 
 [![](/ByteByteGoHq/system-design-101/raw/main/images/learn-payments.jpg)](https://github.com/ByteByteGoHq/system-design-101/blob/main/images/learn-payments.jpg)
 
-### Why is the credit card called “the most profitable product in banks”? How does VISA/Mastercard make money?
+### Why is the credit card called "the most profitable product in banks"? How does VISA/Mastercard make money?
 
 [](#why-is-the-credit-card-called-the-most-profitable-product-in-banks-how-does-visamastercard-make-money)
 
@@ -968,7 +969,7 @@ The diagram below shows the economics of the credit card payment flow.
 
 1.  The cardholder pays a merchant $100 to buy a product.
 
-2. The merchant benefits from the use of the credit card with higher sales volume and needs to compensate the issuer and the card network for providing the payment service. The acquiring bank sets a fee with the merchant, called the “merchant discount fee.”
+2. The merchant benefits from the use of the credit card with higher sales volume and needs to compensate the issuer and the card network for providing the payment service. The acquiring bank sets a fee with the merchant, called the "merchant discount fee."
 
 3 - 4. The acquiring bank keeps $0.25 as the acquiring markup, and $1.75 is paid to the issuing bank as the interchange fee. The merchant discount fee should cover the interchange fee.
 
@@ -984,7 +985,7 @@ Why should the issuing bank be compensated?
 * The issuer pays the merchant before the cardholder pays the issuer.
 * The issuer has other operating costs, including managing customer accounts, providing statements, fraud detection, risk management, clearing & settlement, etc.
 
-### How does VISA work when we swipe a credit card at a merchant’s shop?
+### How does VISA work when we swipe a credit card at a merchant's shop?
 
 [](#how-does-visa-work-when-we-swipe-a-credit-card-at-a-merchants-shop)
 
@@ -992,13 +993,13 @@ Why should the issuing bank be compensated?
 
 VISA, Mastercard, and American Express act as card networks for the clearing and settling of funds. The card acquiring bank and the card issuing bank can be – and often are – different. If banks were to settle transactions one by one without an intermediary, each bank would have to settle the transactions with all the other banks. This is quite inefficient.
 
-The diagram below shows VISA’s role in the credit card payment process. There are two flows involved. Authorization flow happens when the customer swipes the credit card. Capture and settlement flow happens when the merchant wants to get the money at the end of the day.
+The diagram below shows VISA's role in the credit card payment process. There are two flows involved. Authorization flow happens when the customer swipes the credit card. Capture and settlement flow happens when the merchant wants to get the money at the end of the day.
 
 * Authorization Flow
 
 Step 0: The card issuing bank issues credit cards to its customers.
 
-Step 1: The cardholder wants to buy a product and swipes the credit card at the Point of Sale (POS) terminal in the merchant’s shop.
+Step 1: The cardholder wants to buy a product and swipes the credit card at the Point of Sale (POS) terminal in the merchant's shop.
 
 Step 2: The POS terminal sends the transaction to the acquiring bank, which has provided the POS terminal.
 
@@ -1014,7 +1015,7 @@ Step 3: The card network performs clearing for the transactions collected from d
 
 Step 4: The issuing banks confirm the correctness of the clearing files, and transfer money to the relevant acquiring banks.
 
-Step 5: The acquiring bank then transfers money to the merchant’s bank.
+Step 5: The acquiring bank then transfers money to the merchant's bank.
 
 Step 4: The card network clears up the transactions from different acquiring banks. Clearing is a process in which mutual offset transactions are netted, so the number of total transactions is reduced.
 
@@ -1024,7 +1025,7 @@ In the process, the card network takes on the burden of talking to each bank and
 
 [](#payment-systems-around-the-world-series-part-1-unified-payments-interface-upi-in-india)
 
-What’s UPI? UPI is an instant real-time payment system developed by the National Payments Corporation of India.
+What's UPI? UPI is an instant real-time payment system developed by the National Payments Corporation of India.
 
 It accounts for 60% of digital retail transactions in India today.
 
@@ -1056,7 +1057,7 @@ It's worth noting that while these concepts emerged at different times. They are
 
 [](#what-is-k8s-kubernetes)
 
-K8s is a container orchestration system. It is used for container deployment and management. Its design is greatly impacted by Google’s internal system Borg.
+K8s is a container orchestration system. It is used for container deployment and management. Its design is greatly impacted by Google's internal system Borg.
 
 [![](/ByteByteGoHq/system-design-101/raw/main/images/k8s.jpeg)](https://github.com/ByteByteGoHq/system-design-101/blob/main/images/k8s.jpeg)
 
@@ -1124,7 +1125,7 @@ In short, Docker focuses on containerization and running containers on individua
 
 [](#how-does-docker-work)
 
-The diagram below shows the architecture of Docker and how it works when we run “docker build”, “docker pull” and “docker run”.
+The diagram below shows the architecture of Docker and how it works when we run "docker build", "docker pull" and "docker run".
 
 [![](/ByteByteGoHq/system-design-101/raw/main/images/docker.jpg)](https://github.com/ByteByteGoHq/system-design-101/blob/main/images/docker.jpg)
 
@@ -1142,7 +1143,7 @@ There are 3 components in Docker architecture:
 
   A Docker registry stores Docker images. Docker Hub is a public registry that anyone can use.
 
-Let’s take the “docker run” command as an example.
+Let's take the "docker run" command as an example.
 
 1. Docker pulls the image from the registry.
 2. Docker creates a new container.
@@ -1181,7 +1182,7 @@ Git is a distributed version control system.
 
 Every developer maintains a local copy of the main repository and edits and commits to the local copy.
 
-The commit is very fast because the operation doesn’t interact with the remote repository.
+The commit is very fast because the operation doesn't interact with the remote repository.
 
 If the remote repository crashes, the files can be recovered from the local repositories.
 
@@ -1193,21 +1194,21 @@ What are the differences?
 
 [![](/ByteByteGoHq/system-design-101/raw/main/images/git-merge-git-rebase.jpeg)](https://github.com/ByteByteGoHq/system-design-101/blob/main/images/git-merge-git-rebase.jpeg)
 
-When we **merge changes** from one Git branch to another, we can use ‘git merge’ or ‘git rebase’. The diagram below shows how the two commands work.
+When we **merge changes** from one Git branch to another, we can use 'git merge' or 'git rebase'. The diagram below shows how the two commands work.
 
 **Git merge**
 
-This creates a new commit G’ in the main branch. G’ ties the histories of both main and feature branches.
+This creates a new commit G' in the main branch. G' ties the histories of both main and feature branches.
 
 Git merge is **non-destructive**. Neither the main nor the feature branch is changed.
 
 **Git rebase**
 
-Git rebase moves the feature branch histories to the head of the main branch. It creates new commits E’, F’, and G’ for each commit in the feature branch.
+Git rebase moves the feature branch histories to the head of the main branch. It creates new commits E', F', and G' for each commit in the feature branch.
 
 The benefit of rebase is that it has a linear **commit history**.
 
-Rebase can be dangerous if “the golden rule of git rebase” is not followed.
+Rebase can be dangerous if "the golden rule of git rebase" is not followed.
 
 **The Golden Rule of Git Rebase**
 
@@ -1343,7 +1344,7 @@ How is the data encrypted and decrypted?
 
 Step 1 - The client (browser) and the server establish a TCP connection.
 
-Step 2 - The client sends a “client hello” to the server. The message contains a set of necessary encryption algorithms (cipher suites) and the latest TLS version it can support. The server responds with a “server hello” so the browser knows whether it can support the algorithms and TLS version.
+Step 2 - The client sends a "client hello" to the server. The message contains a set of necessary encryption algorithms (cipher suites) and the latest TLS version it can support. The server responds with a "server hello" so the browser knows whether it can support the algorithms and TLS version.
 
 The server then sends the SSL certificate to the client. The certificate contains the public key, host name, expiry dates, etc. The client validates the certificate.
 
@@ -1439,7 +1440,7 @@ From simple to complex, here is my understanding of user identity management:
 
 **What is salt?**
 
-According to OWASP guidelines, “a salt is a unique, randomly generated string that is added to each password as part of the hashing process”.
+According to OWASP guidelines, "a salt is a unique, randomly generated string that is added to each password as part of the hashing process".
 
 **How to store a password and salt?**
 
@@ -1452,7 +1453,7 @@ To validate a password, it can go through the following process:
 
 1. A client enters the password.
 2. The system fetches the corresponding salt from the database.
-3. The system appends the salt to the password and hashes it. Let’s call the hashed value H1.
+3. The system appends the salt to the password and hashes it. Let's call the hashed value H1.
 4. The system compares H1 and H2, where H2 is the hash stored in the database. If they are the same, the password is valid.
 
 ### Explaining JSON Web Token (JWT) to a 10 year old Kid
@@ -1484,7 +1485,7 @@ There are two stages involved:
 * Stage 1 - The user enables Google two-step verification.
 * Stage 2 - The user uses the authenticator for logging in, etc.
 
-Let’s look at these stages.
+Let's look at these stages.
 
 **Stage 1**
 
@@ -1546,11 +1547,11 @@ Yes, this is the real Twitter architecture. It is posted by Elon Musk and redraw
 
 [![](/ByteByteGoHq/system-design-101/raw/main/images/twitter-arch.jpeg)](https://github.com/ByteByteGoHq/system-design-101/blob/main/images/twitter-arch.jpeg)
 
-### Evolution of Airbnb’s microservice architecture over the past 15 years
+### Evolution of Airbnb's microservice architecture over the past 15 years
 
 [](#evolution-of-airbnbs-microservice-architecture-over-the-past-15-years)
 
-Airbnb’s microservice architecture went through 3 main stages.
+Airbnb's microservice architecture went through 3 main stages.
 
 [![](/ByteByteGoHq/system-design-101/raw/main/images/airbnb_arch.jpeg)](https://github.com/ByteByteGoHq/system-design-101/blob/main/images/airbnb_arch.jpeg)
 
@@ -1558,7 +1559,7 @@ Monolith (2008 - 2017)
 
 Airbnb began as a simple marketplace for hosts and guests. This is built in a Ruby on Rails application - the monolith.
 
-What’s the challenge?
+What's the challenge?
 
 * Confusing team ownership + unowned code
 * Slow deployment
@@ -1573,7 +1574,7 @@ Microservice aims to solve those challenges. In the microservice architecture, k
 * UI aggregation service
 * Each service had one owning team
 
-What’s the challenge?
+What's the challenge?
 
 Hundreds of services and dependencies were difficult for humans to manage.
 
@@ -1628,7 +1629,7 @@ The interviewer is probably expecting something like the top portion of the pict
 
 **What it actually is**
 
-Stack Overflow serves all the traffic with only 9 on-premise web servers, and it’s on monolith! It has its own servers and does not run on the cloud.
+Stack Overflow serves all the traffic with only 9 on-premise web servers, and it's on monolith! It has its own servers and does not run on the cloud.
 
 This is contrary to all our popular beliefs these days.
 
@@ -1664,7 +1665,7 @@ This is an interesting and unique case study because microservices have become a
 
   Amazon CTO Werner Vogels: “Building **evolvable software systems** is a strategy, not a religion. And revisiting your architecture with an open mind is a must.”
 
-Ex Amazon VP Sustainability Adrian Cockcroft: “The Prime Video team had followed a path I call **Serverless First**…I don’t advocate **Serverless Only**”.
+Ex Amazon VP Sustainability Adrian Cockcroft: "The Prime Video team had followed a path I call **Serverless First**…I don’t advocate **Serverless Only**”.
 
 ### How does Disney Hotstar capture 5 Billion Emojis during a tournament?
 
@@ -1696,7 +1697,7 @@ The diagram below shows the evolution of message storage at Discord:
 
 MongoDB ➡️ Cassandra ➡️ ScyllaDB
 
-In 2015, the first version of Discord was built on top of a single MongoDB replica. Around Nov 2015, MongoDB stored 100 million messages and the RAM couldn’t hold the data and index any longer. The latency became unpredictable. Message storage needs to be moved to another database. Cassandra was chosen.
+In 2015, the first version of Discord was built on top of a single MongoDB replica. Around Nov 2015, MongoDB stored 100 million messages and the RAM couldn't hold the data and index any longer. The latency became unpredictable. Message storage needs to be moved to another database. Cassandra was chosen.
 
 In 2017, Discord had 12 Cassandra nodes and stored billions of messages.
 
@@ -1728,11 +1729,11 @@ Step 2: The video data is compressed and encoded. For example, the compressing a
 
 Step 3: The encoded data is divided into smaller segments, usually seconds in length, so it takes much less time to download or stream.
 
-Step 4: The segmented data is sent to the streaming server. The streaming server needs to support different devices and network conditions. This is called ‘Adaptive Bitrate Streaming.’ This means we need to produce multiple files at different bitrates in steps 2 and 3.
+Step 4: The segmented data is sent to the streaming server. The streaming server needs to support different devices and network conditions. This is called 'Adaptive Bitrate Streaming.' This means we need to produce multiple files at different bitrates in steps 2 and 3.
 
 Step 5: The live streaming data is pushed to edge servers supported by CDN (Content Delivery Network.) Millions of viewers can watch the video from an edge server nearby. CDN significantly lowers data transmission latency.
 
-Step 6: The viewers’ devices decode and decompress the video data and play the video in a video player.
+Step 6: The viewers' devices decode and decompress the video data and play the video in a video player.
 
 Steps 7 and 8: If the video needs to be stored for replay, the encoded data is sent to a storage server, and viewers can request a replay from it later.
 
