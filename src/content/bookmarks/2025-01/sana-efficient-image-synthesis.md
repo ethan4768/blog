@@ -9,7 +9,7 @@ tags:
   - opensource
   - image
 pubDatetime: 2025-01-12T22:14:53+08:00
-ogImage: 
+ogImage: https://nvlabs.github.io/Sana/asset/SANA.png
 ---
 
 [原文链接](https://nvlabs.github.io/Sana/)
