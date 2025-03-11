@@ -1,0 +1,99 @@
+---
+title: "Netease云音乐无损解析工具 - 开源MIT授权"
+slug: netease-lossless-parser
+description: |
+  本项目提供网易云音乐的无损解析工具，支持API及GUI模式。用户可自由使用、修改和分享代码，但不得用于商业项目。请遵循MIT许可证。使用Python环境进行安装和运行，支持多种音质选择，包括无损音质和极高音质。
+tags: 
+  - API
+  - audio
+  - opensource
+  - python
+pubDatetime: 2025-03-11T14:09:53+08:00
+ogImage: https://opengraph.githubassets.com/19ba359121e4a781e91cac7b7138b643ad8167b87035f63b21d56c357c330eaf/Suxiaoqinx/Netease_url
+---
+
+[原文链接](https://github.com/Suxiaoqinx/Netease_url?tab=readme-ov-file)
+
+---
+
+# ！声明 ！
+
+[](#声明-)
+
+本项目为开源软件，遵循MIT许可证。任何个人或组织均可自由使用、修改和分发本项目的源代码。然而，我们明确声明，本项目及其任何衍生作品不得用于任何商业或付费项目。任何违反此声明的行为都将被视为对本项目许可证的侵犯。我们鼓励大家在遵守开源精神和许可证的前提下，积极贡献和分享代码。
+
+# 网易云无损解析使用方法
+
+[](#网易云无损解析使用方法)
+
+先安装 文件所需要的依赖模块 pip install -r requirements.txt 再运行main.py文件即可
+
+# 环境要求
+
+[](#环境要求)
+
+Python >= 3
+
+## GUI模式参数
+
+[](#gui模式参数)
+
+python main.py
+
+| 参数列表    | 参数说明           |
+| ------- | -------------- |
+| --mode  | api 或 gui      |
+| --level | 音质参数(请看下方音质说明) |
+| --url   | 解析获取到的网易云音乐地址  |
+
+完整请求 python main.py --mode gui --url 音乐地址 --level 音质
+
+## API模式参数列表
+
+[](#api模式参数列表)
+
+请求链接选择 <http://ip:port/Song_V1>
+
+请求方式 GET & POST
+
+| 参数列表      | 参数说明                       |
+| --------- | -------------------------- |
+| url & ids | 解析获取到的网易云音乐地址 \*任选其一       |
+| level     | 音质参数(请看下方音质说明)             |
+| type      | 解析类型 json down text \*任选其一 |
+
+# 音质说明
+
+[](#音质说明)
+
+standard(标准音质), exhigh(极高音质), lossless(无损音质), hires(Hi-Res音质), jyeffect(高清环绕声), sky(沉浸环绕声), jymaster(超清母带)
+
+黑胶VIP音质选择 standard, exhigh, lossless, hires, jyeffect\
+\
+黑胶SVIP音质选择 sky, jymaster
+
+# 演示站点
+
+[](#演示站点)
+
+[在线解析](https://api.toubiec.cn/wyapi.html)
+
+# 注意事项
+
+[](#注意事项)
+
+请先在cookie.txt文件内填入黑胶会员账号的cookie 才可以解析！ Cookie格式为↓ MUSIC\_U=你获取到的MUSIC\_U值;os=pc;appver=8.9.70; 完整填入cookie.txt即可！ 具体值在cookie.txt里面就有 替换一下就行了
+
+# 感谢
+
+[](#感谢)
+
+[Ravizhan](https://github.com/ravizhan)
+
+# 反馈方法
+
+[](#反馈方法)
+
+请在Github的lssues反馈 或者到我[博客](https://www.toubiec.cn)反馈
+
+
