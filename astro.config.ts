@@ -21,18 +21,7 @@ export default defineConfig({
   vite: {
     optimizeDeps: {
       exclude: ["@resvg/resvg-js"],
-    },
-    build: {
-      rollupOptions: {
-        onwarn(warning, warn) {
-          if (warning.code === 'UNRESOLVED_IMPORT') {
-            console.warn(`⚠️  Skipping unresolved import: ${warning.source}`);
-            return;
-          }
-          warn(warning);
-        },
-      },
-    },
+    }
   },
   scopedStyleStrategy: "where",
   experimental: {

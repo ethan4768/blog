@@ -10,8 +10,9 @@ function svgBufferToPngBuffer(svg: string) {
 }
 
 export async function generateOgImageForPost(post: CollectionEntry<"posts" | "bookmarks" | "favorites">) {
-  const svg = await postOgImage(post);
-  return svgBufferToPngBuffer(svg);
+  return null
+  // const svg = await postOgImage(post);
+  // return svgBufferToPngBuffer(svg);
 }
 
 export async function generateOgImageForSite() {

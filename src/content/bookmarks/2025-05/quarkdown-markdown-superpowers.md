@@ -203,13 +203,13 @@ The desired document type can be set by calling the [`.doctype` function](https:
 \begin{figure}[!h]
     \centering
     \begin{subfigure}[b]
-        \includegraphics[width=0.3\linewidth]{img1.png}
+        \includegraphics[width=0.3\linewidth]
     \end{subfigure}
     \begin{subfigure}[b]
-        \includegraphics[width=0.3\linewidth]{img2.png}
+        \includegraphics[width=0.3\linewidth]
     \end{subfigure}
     \begin{subfigure}[b]
-        \includegraphics[width=0.3\linewidth]{img3.png}
+        \includegraphics[width=0.3\linewidth]
     \end{subfigure}
 \end{figure}
 ``` | ```
@@ -226,11 +226,7 @@ The desired document type can be set by calling the [`.doctype` function](https:
     This text is _centered_.
 
 .row alignment:{spacebetween}
-    ![Image 1](img1.png)
 
-    ![Image 2](img2.png)
-    
-    ![Image 3](img3.png)
 ``` |
 
  
